@@ -1,0 +1,66 @@
+### IDE ###
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.swp
+*.swo
+
+### Build ###
+target/
+build/
+out/
+bin/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+### Compiled files ###
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+### Archives ###
+*.zip
+*.tar.gz
+*.rar
+
+### Logs ###
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+### System ###
+.DS_Store
+Thumbs.db
+*.orig
+
+### Maven ###
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
+
+### Temp files ###
+*.tmp
+*.temp
+*.bak
+*.ctxt
+.mtj.tmp/
+
+### Spring Boot DevTools ###
+.spring-boot-devtools.properties
+.restart
+.reload
+.devtools
+
+### Embedded DBs ###
+*.h2.db
+*.mv.db
+*.trace.db
+
+### Test Reports ###
+test-output/
+surefire-reports/
+jacoco.exec
