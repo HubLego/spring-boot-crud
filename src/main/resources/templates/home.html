@@ -1,0 +1,35 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{fragments.html}">
+<head>
+    <title layout:fragment="title">Home</title>
+</head>
+<body>
+<!-- Hero section -->
+<section layout:fragment="content" class="hero">
+    <div class="hero-content">
+        <h1 class="display-4 mb-4">
+            Welcome, <span th:text="${#authentication.name}">User</span>!
+        </h1>
+        <p class="lead">
+            Use the navigation above to manage users or view your profile.
+        </p>
+        <div class="mt-5">
+            <sec:authorize access="hasRole('ADMIN')">
+                <a th:href="@{/admin/users}"
+                   class="btn btn-success btn-lg me-3">
+                    Go to User List
+                </a>
+            </sec:authorize>
+            <a th:href="@{/profile}"
+               class="btn btn-primary btn-lg">
+                View Profile
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+</html>
