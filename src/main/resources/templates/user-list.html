@@ -1,0 +1,42 @@
+<!-- user-list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{fragments.html}">
+<head>
+    <title layout:fragment="title">User List</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>User List</h2>
+        <div>
+            <a th:href="@{/admin/users/create}" class="btn btn-success me-2">+ Add New User</a>
+            <a th:href="@{/logout}" class="btn btn-outline-secondary">Logout</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-light">
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <sec:authorize access="hasRole('ADMIN')">
+                        <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-sm btn-outline-primary me-1">Edit</a>
+                        <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    </sec:authorize>
+                </td>
+            </tr>
+            <tr th:if="${users.empty}"><td colspan="4" class="text-center text-muted">No users found.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

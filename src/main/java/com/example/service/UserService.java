@@ -4,8 +4,9 @@ import com.example.model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getAll();
+    List<User> findAll();
+    User findById(Long id);
+    User findByEmail(String email);
     void save(User user);
-    void delete(Long id);
-    User getById(Long id);
+    void deleteById(Long id);
 }
